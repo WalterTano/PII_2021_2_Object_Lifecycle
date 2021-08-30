@@ -19,6 +19,31 @@ namespace ClassLibrary
         /// <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
         public bool IsEngineStarted { get; private set; }
 
+        private static int count = 0;
+        /// <summary>
+        /// Obtiene la cantidad de instancias de la clase Train existentes durante la ejecución.
+        /// </summary>
+        public static int Count { get => count; set => count = value; }
+
+        private string id;
+        /// <summary>
+        /// Cadena de caracteres que identifica a una instancia de Train en específico.
+        /// </summary>
+        /// <value>Retorna el valor del string identificador de una instancia de la clase Train</value>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Constructor para una instancia de la clase Train. Recibe un string identificador como parámetro.
+        /// </summary>
+        public Train(string id){
+            this.Id = id;
+            Train.count++;
+        }
+
+        ~Train(){
+            Train.count--;
+        }
+
         /// <summary>
         /// Enciende las máquinas del tren.
         /// </summary>
@@ -32,7 +57,7 @@ namespace ClassLibrary
                 Console.Write("The engines are already running");
                 return false;
             }
-
+        
             this.IsEngineStarted = true;
             Console.Write("Engines on");
             return true;
