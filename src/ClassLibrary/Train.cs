@@ -23,7 +23,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene la cantidad de instancias de la clase Train existentes durante la ejecución.
         /// </summary>
-        public static int Count { get => count; set => count = value; }
+        public static int Count { get => count; private set => count = value; }
 
         private string id;
         /// <summary>
